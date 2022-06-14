@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       
+        function primeSum(arr, n) {
+            
+            let max_val = arr.sort((a, b) => b - a)[0];
+        
+            
+            let prime = new Array(max_val + 1).fill(true);
+        
+         
+            prime[0] = false;
+            prime[1] = false;
+            for (let p = 2; p * p <= max_val; p++) {
+        
+              
+                if (prime[p] == true) {
+        
+                    
+                    for (let i = p * 2; i <= max_val; i += p)
+                        prime[i] = false;
+                }
+            }
+        
+           
+            let sum = 0;
+            for (let i = 0; i < n; i++)
+                if (prime[arr[i]])
+                    sum += arr[i];
+        
+            return sum;
+        }
+        
+        
+        
+        let arr = [ 2, 3, 5, 7];
+        let n = arr.length;
+        
+        document.write(primeSum(arr, n));
+        
+       
+        </script>
+        
+    
+</body>
+</html>
